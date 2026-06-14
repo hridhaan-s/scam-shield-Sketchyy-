@@ -25,7 +25,7 @@ function performSearch() {
         if (foundDest) {
             // Build a clean, minimal list to hold our sketchy data points
             let htmlContent = `
-                <h3 style="margin-bottom: 15px; text-transform: uppercase; font-size: 1.2rem;">⚠️ Sketchy Intel for ${foundDest.city}:</h3>
+                <h3 style="margin-bottom: 15px; text-transform: uppercase; font-size: 1.2rem;">Here is Sketchy Intel for ${foundDest.city}:</h3>
                 <ul style="list-style: square; padding-left: 20px; color: #cccccc; line-height: 1.6;">
             `;
 
@@ -36,7 +36,7 @@ function performSearch() {
             htmlContent += `</ul>`;
             resultsContainer.innerHTML = htmlContent;
         } else {
-            resultsContainer.innerHTML = `<p style='color: #ff4444;'>No database records found for "${searchInput.value}". Try Paris, Rome, or New York!</p>`;
+            resultsContainer.innerHTML = `<p style='color: #ff4444;'>Oh sorry no reports found for "${searchInput.value}". Please try from our records of 50 famous places like Agra, Tokyo, London, Venice, Paris, Rome, or New York!</p>`;
         }
     }
 
@@ -55,3 +55,4 @@ if (e.key === "Enter") {
 
 
 });
+
