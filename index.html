@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Sketchyy</title>
-
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="style.css">
 
 </head>
@@ -26,15 +26,22 @@
     <p>Avoid Tourist scams before they happen, Enter the location you plan to visit and this system will help you stay safe. and away from scams and crime</p>
 
 <div class="search-bar">
-    <input type="text" placeholder="Search your Destination..." id="destinationinput">
+    <input type="text" placeholder="Where are you planning to head?" id="destinationinput">
     <button id="searchbutton">Search</button>
 </div>
-</div>
+<div id="weather-display" style="margin-top: 20px; display: none;"></div>
+    </div>
+
+    <div class="hero-image">
+        <div id="map"></div> 
+    </div>
+
+
+
+
 </section>
 
-<div class="hero-image">
 
-<div id="globe"></div> 
 </div>
 
 <footer>
@@ -43,6 +50,7 @@
         This is a project made by @Hridhaan for Hack Club ysws Off-Track
     </p>
 </footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="data/destinations.js"></script>
 <script src="script.js"></script>
 </body>
