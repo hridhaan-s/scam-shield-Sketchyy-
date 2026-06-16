@@ -1,22 +1,32 @@
 # Sketchyy
 
-Travel Safely and Avoid Tourist Scam using this tool
+Sketchyy is a tool I made for travellers, Where this is like a scam shield for them which they can use to find the latest scams and crime in the place which they are about visit along with some other features like Weather and Map of that place :D
 
-Sketchy let's you travel with out the worries of regional scams and helps you understand the local safety risk and whom to contact during an emergency 
+Here is an Image of it :D
+
+![alt text](image.png)
+
+![alt text](image-1.png)
+
+
+Playable at:
+
+
+
 
 ## Features
 
-* Scam Database ( Segregated Region and famous spot wise)
-* Travel tips
-* Emergency contact
-* Animated Ui and simple to use site
+* Scam Database (Collection of scam reports present online about famous places)
+* Travel tips (Gives you recent weather and other atmospheric details)
+* Minimal to use site ui
 
-## Built using
+## Built with help from
 
 * HTML
 * CSS
 * JS, Git and VS code
 
-This is an official submission for ysws Off track (HACK CLUB)
+This is my submission for the ysws Off-track (HACK CLUB)
+
 
 Thanks for your time :D

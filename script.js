@@ -1,20 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // 1. UI Elements Mapping
     const searchInput = document.querySelector(".search-bar input");
     const searchButton = document.querySelector(".search-bar button");
     const heroContent = document.querySelector(".hero-content");
     const weatherDisplay = document.getElementById("weather-display");
     
-    // Loaded the hype audio file!
     const searchMusic = new Audio("naruto (1).mp3");
 
-    // 2. Dynamic Results Container Definition
     const resultsContainer = document.createElement("div");
     resultsContainer.id = "results-display";
     resultsContainer.style.marginTop = "30px";
     heroContent.appendChild(resultsContainer);
 
-    // 3. Initialize Map Center points
     const map = L.map('map').setView([20, 0], 2);
 
     L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
@@ -23,20 +19,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let currentMarker = null;
 
-    // Helper Function: Generates customized gear advice based on temperature numbers
     function getWeatherAdvice(temp) {
         if (temp <= 10) {
-            return "❄️ **🚨 Freezing Alert!** It's absolute chills out there right now. Def pack some heavy warm clothes, thick jackets, and layers or you're gonna freeze!";
+            return "AbsolutelyFreezing ! It's absolute chills out there right now. Def pack some heavy warm clothes, or you will freeze!";
         } else if (temp > 10 && temp <= 18) {
-            return "🍃 **Chilly Vibes:** It's got a bit of a nip in the air. Grab a comfortable hoodie, sweater, or light jacket before you head out.";
+            return "Chilly Vibes: You could feel a bit cool and take some warm clothes please.";
         } else if (temp > 18 && temp <= 27) {
-            return "☀️ **Perfect Weather:** Super nice and comfortable. Standard clothing or a light t-shirt will do perfectly fine.";
+            return "Perfect Weather: Whether so good that you won't wanna come back, You will absolutely like it .";
         } else {
-            return "🔥 **Scorching Heat:** It's getting incredibly hot out there! Keep yourself hydrated, wear light clothes, and don't forget sun protection.";
+            return "Scorching Heat: It's is super hot Out there take a water botle + Umbrella! ";
         }
     }
 
-    // Helper Function: Dynamically creates and injects the modal popup to show supported locations
     function openSupportedPlacesModal() {
         const existingModal = document.getElementById("supported-modal");
         if (existingModal) existingModal.remove();
@@ -57,12 +51,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const placesList = destinations.map(d => `${d.city}, ${d.country}`).sort();
 
         modalOverlay.innerHTML = `
-            <div style="background-color: #121212; border: 3px solid #ffffff; box-shadow: 12px 12px 0px #222222; padding: 30px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; font-family: inherit;">
+            <div style="background-color: #121212; border: 3px solid #ffffff; box-shadow: 12px 12px 0px #222222; padding: 30px; max-width: 500px; width: 90%; max-height: 80vh; overflow-y: auto; font-family: calibir;">
                 <h3 style="text-transform: uppercase; border-bottom: 2px solid #333; padding-bottom: 10px; margin-bottom: 15px; color: #ffffff; display: flex; justify-content: space-between; align-items: center;">
-                    📋 Supported Intel Zones
+                    Supported Intel Zones
                     <button id="close-modal-btn" style="background: transparent; border: none; color: #ff4444; font-size: 1.5rem; cursor: pointer; font-weight: bold;">&times;</button>
                 </h3>
-                <p style="color: #a0a0a0; font-size: 0.9rem; margin-bottom: 15px;">We currently track safety metrics and tourist scams across these locations:</p>
+                <p style="color: #a0a0a0; font-size: 0.9rem; margin-bottom: 15px;">We track tourist scams in these locations:</p>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; color: #00ffcc; font-size: 0.95rem;">
                     ${placesList.map(place => `<div style="cursor: pointer; text-decoration: underline;" class="modal-place-item">${place}</div>`).join('')}
                 </div>
@@ -88,7 +82,6 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // 4. API Function: Live Weather Fetching & Clothing Strategy Evaluator
     async function fetchLocalWeather(cityName) {
         const apiKey = '73112ed73eb8fe3ebbddc25419d8109a'; 
         try {
@@ -101,11 +94,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
             weatherDisplay.style.display = "block";
             weatherDisplay.innerHTML = `
-                <p style="color: #ffffff; font-weight: bold; margin-bottom: 8px;">🌍 Real-Time Environment Intel:</p>
+                <p style="color: #ffffff; font-weight: bold; margin-bottom: 8px;">Weather Details</p>
                 <div style="margin-bottom: 8px; color: #cccccc;">
                     <span style="color: #00ffcc; font-weight: bold;">${roundedTemp}°C</span> | 
                     <span style="text-transform: capitalize;">${data.weather[0].description}</span> | 
-                    <span>💧 Humidity: ${data.main.humidity}%</span>
+                    <span>Humidity: ${data.main.humidity}%</span>
                 </div>
                 <p style="color: #ffffff; font-size: 0.95rem; border-top: 1px dashed #333; padding-top: 8px; line-height: 1.4;">${smartAdvice}</p>
             `;
@@ -115,7 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 5. API Function: Map Geocoding & Traversal
+    
     async function updateMapLocation(locationName) {
         try {
             const response = await fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${locationName}&limit=1`);
@@ -130,7 +123,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (currentMarker) map.removeLayer(currentMarker);
 
                 currentMarker = L.marker([lat, lon]).addTo(map)
-                    .bindPopup(`<b>${locationName}</b><br>Scanning sketchy zones...`)
+                    .bindPopup(`<b>${locationName}</b><br>This is the Place...`)
                     .openPopup();
             }
         } catch (error) {
@@ -138,7 +131,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 6. Central Search Evaluation Logic (Converted to clean Hoisted statement format)
+    // 6. Standard Search Logic
     function performSearch() {
         const query = searchInput.value.trim().toLowerCase();
         resultsContainer.innerHTML = ""; 
@@ -163,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
             fetchLocalWeather(foundDest.city);
 
             let htmlContent = `
-                <h3 style="margin-bottom: 15px; text-transform: uppercase; font-size: 1.2rem;">Here is Sketchy Intel for ${foundDest.city}:</h3>
+                <h3 style="margin-bottom: 15px; text-transform: uppercase; font-size: 1.2rem;">Here is what is sketchy at ${foundDest.city}</h3>
                 <ul style="list-style: square; padding-left: 20px; color: #cccccc; line-height: 1.6;">
             `;
 
@@ -178,7 +171,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <div style="line-height: 1.5;">
                     <p style='color: #ff4444; margin-bottom: 15px;'>Oh sorry, no reports found for "${searchInput.value}".</p>
                     <button id="view-supported-btn" style="padding: 10px 18px; border: 2px solid #ffffff; background: transparent; color: #ffffff; font-family: inherit; font-weight: bold; cursor: pointer; box-shadow: 4px 4px 0px #222222;">
-                        🗺️ View Supported Locations
+                        View Locations Reported 
                     </button>
                 </div>
             `;
@@ -187,11 +180,20 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // 7. Input Interface Bindings
     searchButton.addEventListener("click", performSearch);
     searchInput.addEventListener("keypress", (e) => {
         if (e.key === "Enter") {
             performSearch();
         }
     });
+});
+
+window.addEventListener("load", () => {
+    const loaderScreen = document.getElementById("loading-screen");
+    if (loaderScreen) {
+        loaderScreen.style.opacity = "0";
+        loaderScreen.style.visibility = "hidden";
+        
+        setTimeout(() => loaderScreen.remove(), 500);
+    }
 });
