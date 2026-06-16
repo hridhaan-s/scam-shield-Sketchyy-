@@ -188,6 +188,24 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 });
 
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  
+  // Guard clause in case the page isn't tall enough to scroll
+  if (maxScroll <= 0) return;
+
+  const scrollPercentage = scrollTop / maxScroll;
+  const degrees = scrollPercentage * 360; 
+  
+  const compass = document.getElementById('scroll-compass');
+  if (compass) {
+    compass.style.transform = `rotate(${degrees}deg)`;
+  }
+});
+
+
+
 window.addEventListener("load", () => {
     const loaderScreen = document.getElementById("loading-screen");
     if (loaderScreen) {
