@@ -4,7 +4,9 @@ Sketchyy is a tool I made for travellers, Where this is like a scam shield for t
 
 Here is an Image of it :D
 
-![alt text](image.png)
+[![alt text](image.png)
+](https://cdn.hackclub.com/019ed1b3-403e-727f-9085-ff5009e82f57/screenshot_2026-06-16_235936.png)
+
 
 ![alt text](image-1.png)
 
